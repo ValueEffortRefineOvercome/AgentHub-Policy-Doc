@@ -72,7 +72,7 @@ updated: 2026-10-01
 | 키 | 규칙 |
 |---|---|
 | `id` | 파일명의 `<TYPE>-<NNNN>` 과 일치해야 한다 |
-| `status` | `draft` `open` `done` `dropped`. 종류별 추가 값은 그 템플릿에 |
+| `status` | `draft` `open` `done` `dropped`. 뜻과 전이 주체는 5절 |
 | `links` | 상위·관련 문서 ID. 없으면 `[]` 로 둔다 (키를 빼지 않는다) |
 | `updated` | 내용이 바뀐 날. 절대 날짜 (`2026-10-01`) |
 
@@ -154,7 +154,7 @@ ISSUE 가 수정 요청 창구다. 그 용도로 종류를 새로 만들지 않�
 bash .claude/skills/doc-policy/checks/docs.sh    # 저장소 루트에서, git add 뒤에
 ```
 
-`docs/<종류>/` 의 문서만 본다. 7가지를 **실제로 막는다**:
+`docs/<종류>/` 의 문서만 본다. 8가지를 **실제로 막는다**:
 
 | 검사 | 왜 |
 |---|---|
@@ -171,4 +171,3 @@ bash .claude/skills/doc-policy/checks/docs.sh    # 저장소 루트에서, git a
 
 ## 8. 아직 안 한 것
 - 7 종류를 다 쓰는 프로젝트는 드물다. 어느 것을 쓸지는 프로젝트가 고른다
-- **`status` 전이 주체** — `done` 을 못 고친다면 수정 요청은 어디로 가나
