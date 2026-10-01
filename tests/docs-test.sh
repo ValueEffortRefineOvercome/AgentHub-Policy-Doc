@@ -116,5 +116,31 @@ EOF
 t 1 "ID 중복" "ID 중복"
 rm "$tmp/docs/adr/ADR-0001-duplicate.md"
 
+mk docs/adr/ADR-0008-dropped-no-reason.md <<'EOF'
+---
+id: ADR-0008
+title: t
+status: dropped
+links: []
+updated: 2026-10-01
+---
+본문만 있고 이유가 없다
+EOF
+t 1 "dropped 인데 버린 이유 절 없음" "버린 이유"
+
+mk docs/adr/ADR-0008-dropped-no-reason.md <<'EOF'
+---
+id: ADR-0008
+title: t
+status: dropped
+links: []
+updated: 2026-10-01
+---
+## 버린 이유
+더 싼 방법이 있었다
+EOF
+t 0 "dropped + 버린 이유 절" "문서 3개 정합"
+rm "$tmp/docs/adr/ADR-0008-dropped-no-reason.md"
+
 t 0 "정리 후 다시 통과" "문서 2개 정합"
 exit "$fail"

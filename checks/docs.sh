@@ -48,6 +48,11 @@ while IFS= read -r f; do
   st=$(val status "$b")
   echo " $STATUS " | grep -q " $st " || err "$f: status '$st' 는 허용값이 아니다 ($STATUS)"
 
+  # 4-1) dropped 는 버린 이유를 본문에 남겨야 한다
+  if [ "$st" = dropped ] && ! grep -qE '^##[[:space:]]+버린 이유[[:space:]]*$' "$f"; then
+    err "$f: status 가 dropped 인데 '## 버린 이유' 절이 없다"
+  fi
+
   # 5) updated 형식
   printf '%s' "$(val updated "$b")" | grep -qE '^[0-9]{4}-[0-9]{2}-[0-9]{2}$' \
     || err "$f: updated 가 YYYY-MM-DD 가 아니다"
