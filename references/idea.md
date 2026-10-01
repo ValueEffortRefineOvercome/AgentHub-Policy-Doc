@@ -2,6 +2,9 @@
 
 아직 **할지 모르는** 생각. 설계하지 않고 결정하지 않는다 — 그건 ARCH·ADR 이다.
 
+이건 **승격 단계**의 형식이다. 떠오른 즉시 던져두는 곳은 `docs/IDEA-INBOX.md` 한 줄이고,
+실제로 검토할 때 이 템플릿으로 올린다 (`SKILL.md` 1절).
+
 `status`: `draft`(탐색 중) → `open`(채택, REQ 로 이어짐) → `dropped`(버림)
 
 ```markdown
