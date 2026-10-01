@@ -137,7 +137,10 @@ ISSUE ──▶ REQ | TASK | ADR
 
 - **아래 문서가 위 문서 ID 를 `links` 에 적는다.** 위에서 아래로는 적지 않는다 —
   양방향이면 한쪽이 반드시 낡는다
-- `links` 가 빈 REQ·ARCH·TASK·TEST 는 왜 혼자인지 본문에 한 줄 적는다
+- `links` 가 빈 REQ·ARCH·TASK·TEST 는 본문에 **`## 왜 혼자인가`** 절을 더한다.
+  없으면 `checks/docs.sh` 가 실패한다. 상위 없는 요구사항과 요구 없는 구조는
+  실제 신호다 — 빠뜨린 것인지 정말 독립인지를 적어야 구분된다.
+  IDEA 는 사슬의 시작이고 ADR·ISSUE 는 독립 발생이라 이 규칙 밖이다
 - ADR 이 다른 ADR 을 대체하면 새 ADR 의 `links` 에 옛 ID, 옛 ADR 은 `dropped`
 
 ## 5. 상태와 전이
@@ -204,7 +207,7 @@ ISSUE 가 수정 요청 창구다. 그 용도로 종류를 새로 만들지 않�
 bash .claude/skills/doc-policy/checks/docs.sh    # 저장소 루트에서, git add 뒤에
 ```
 
-`docs/<종류>/` 의 문서만 본다. 8가지를 **실제로 막는다**:
+`docs/<종류>/` 의 문서만 본다. 9가지를 **실제로 막는다**:
 
 | 검사 | 왜 |
 |---|---|
@@ -215,6 +218,7 @@ bash .claude/skills/doc-policy/checks/docs.sh    # 저장소 루트에서, git a
 | `updated` 가 `YYYY-MM-DD` | 상대 날짜는 다음 사람에게 의미가 없다 |
 | `links` 가 존재하는 ID 를 가리킴 | 죽은 참조는 추적을 끊는다 |
 | `dropped` 에 `## 버린 이유` 절 | 버린 이유가 없으면 다음 사람이 같은 길을 다시 간다 |
+| 고아 REQ·ARCH·TASK·TEST 에 `## 왜 혼자인가` 절 | 빠뜨린 것인지 정말 독립인지 구분된다 |
 | 번호 중복 없음 | 같은 ID 둘이면 참조가 모호해진다 |
 
 추적 파일만 보므로 **새 문서는 `git add` 뒤에 검사된다.**

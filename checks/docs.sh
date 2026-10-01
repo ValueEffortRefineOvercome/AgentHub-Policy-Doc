@@ -68,6 +68,16 @@ while IFS= read -r f; do
     done
   fi
 
+  # 6-1) 고아 문서 — REQ·ARCH·TASK·TEST 가 상위 없이 혼자면 이유를 적어야 한다.
+  #      IDEA 는 사슬의 시작이고 ADR·ISSUE 는 독립 발생이라 제외한다.
+  case "$dir" in
+    req|arch|task|test)
+      if printf '%s' "$lk" | grep -qE '^\[[[:space:]]*\]$' \
+         && ! grep -qE '^##[[:space:]]+왜 혼자인가[[:space:]]*$' "$f"; then
+        err "$f: links 가 비었는데 '## 왜 혼자인가' 절이 없다"
+      fi ;;
+  esac
+
   ids="$ids$did	$f
 "
 done <<EOF

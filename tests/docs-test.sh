@@ -25,7 +25,8 @@ status: done
 links: []
 updated: 2026-10-01
 ---
-본문
+## 왜 혼자인가
+정책 자체가 산출물이라 IDEA 단계를 거치지 않았다
 EOF
 mk docs/adr/ADR-0001-submodule.md <<'EOF'
 ---
@@ -141,6 +142,45 @@ updated: 2026-10-01
 EOF
 t 0 "dropped + 버린 이유 절" "문서 3개 정합"
 rm "$tmp/docs/adr/ADR-0008-dropped-no-reason.md"
+
+mk docs/req/REQ-0002-orphan.md <<'EOF'
+---
+id: REQ-0002
+title: 상위 없는 요구사항
+status: draft
+links: []
+updated: 2026-10-01
+---
+본문만 있고 왜 혼자인지가 없다
+EOF
+t 1 "고아 REQ 에 왜 혼자인가 절 없음" "왜 혼자인가"
+
+mk docs/req/REQ-0002-orphan.md <<'EOF'
+---
+id: REQ-0002
+title: 상위 없는 요구사항
+status: draft
+links: []
+updated: 2026-10-01
+---
+## 왜 혼자인가
+IDEA 단계를 거치지 않고 외부 요청으로 바로 들어왔다
+EOF
+t 0 "고아 REQ + 왜 혼자인가 절" "문서 3개 정합"
+rm "$tmp/docs/req/REQ-0002-orphan.md"
+
+mk docs/adr/ADR-0009-standalone.md <<'EOF'
+---
+id: ADR-0009
+title: 독립 ADR
+status: done
+links: []
+updated: 2026-10-01
+---
+ADR 은 links 가 비어도 이 규칙 밖이다
+EOF
+t 0 "독립 ADR 은 규칙 밖" "문서 3개 정합"
+rm "$tmp/docs/adr/ADR-0009-standalone.md"
 
 t 0 "정리 후 다시 통과" "문서 2개 정합"
 exit "$fail"
