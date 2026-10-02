@@ -33,6 +33,7 @@ description: 프로젝트 문서의 종류·위치·이름·상호 참조 규칙
 | `README.md` | 사람이 저장소를 열었을 때 첫 화면 |
 | `CLAUDE.md` | 에이전트 입구. 매 턴 로딩되는 유일한 파일 |
 | `CHANGELOG.md` | `/version-policy` 3절 |
+| `TUTORIAL.md` | 세팅 걸어가기. 지금 상태를 설명하므로 7종이 아니다 |
 | `LICENSE` · `CONTRIBUTING.md` | 관례 위치가 고정 |
 
 ID·프론트매터·`status` 가 없고 `checks/docs.sh` 대상도 아니다 (`docs/<종류>/` 밖이다).
